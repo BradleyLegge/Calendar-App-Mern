@@ -56,7 +56,6 @@ export const deleteBill = async (req, res) => {
             res.status(404);
             throw new Error("Bill not found")
         }
-
         await bill.deleteOne();
         res.json({ message: "Bill removed"})
     } catch (error) {
