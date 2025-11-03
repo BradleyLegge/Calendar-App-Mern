@@ -1,10 +1,24 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import api from "../lib/axios";
 
 const Bills = () => {
   const [name, setName] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [amount, setAmount] = useState("");
+
+  const [bill, setBill] = useState([]);
+
+  useEffect(() => {
+    const fetchBills = async () => {
+      try {
+        const res = await api.get("/bills");
+        setBill(res.data);
+      } catch (error) {
+        console.log("Error fetching bill");
+      }
+    };
+    fetchBills();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,7 +29,7 @@ const Bills = () => {
     }
 
     try {
-      await axios.post("http://localhost:5001/api/bills", {
+      await api.post("/bills", {
         name,
         dueDate,
         amount,
@@ -52,6 +66,14 @@ const Bills = () => {
 
         <button type="submit">Add bill</button>
       </form>
+      <div>
+        <h1>Hello</h1>
+      </div>
+      <div>
+        {bill.map((bill) => (
+          <p key={bill._id}>{bill.name}</p>
+        ))}
+      </div>
     </div>
   );
 };
