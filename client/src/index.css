@@ -31,3 +31,16 @@
   border-radius: 5px;
   height: 100px;
 }
+
+.calendar-day:hover{
+  cursor: pointer;
+  opacity: .5;
+}
+
+.not-current-month {
+  background: beige;
+}
+
+.today{
+  background: aqua;
+}

@@ -40,11 +40,21 @@ const Calendar = () => {
         {WEEKDAYS.map((day) => (
           <p key={day}>{day}</p>
         ))}
-        {daysOfMonth.map((day) => (
-          <div key={day} className="calendar-day">
-            <p>{day.getDate()}</p>
-          </div>
-        ))}
+        {daysOfMonth.map((day) => {
+          const isCurrentMonth = day.getMonth() === currentMonth.getMonth();
+          const isToday =
+            format(day, "yyyy-MM-dd") === format(new Date(), "yyyy-MM-dd");
+          return (
+            <div
+              key={day}
+              className={`calendar-day ${
+                isCurrentMonth ? isToday && "today" : "not-current-month"
+              }`}
+            >
+              <p>{day.getDate()}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
