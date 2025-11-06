@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "date-fns";
+import { useBillsStore } from "../store/useBillsStore";
 import {
   eachDayOfInterval,
   endOfMonth,
@@ -9,11 +10,13 @@ import {
   startOfWeek,
   addMonths,
   subMonths,
+  isSameDay,
 } from "date-fns";
 
 const WEEKDAYS = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 
 const Calendar = () => {
+  const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(currentMonth);
@@ -28,6 +31,11 @@ const Calendar = () => {
 
   const handlePrevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
   const handleNextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
+
+  const { bills, fetchBills } = useBillsStore();
+  useEffect(() => {
+    fetchBills();
+  }, [fetchBills]);
 
   return (
     <div className="calendar-container">
@@ -44,6 +52,7 @@ const Calendar = () => {
           const isCurrentMonth = day.getMonth() === currentMonth.getMonth();
           const isToday =
             format(day, "yyyy-MM-dd") === format(new Date(), "yyyy-MM-dd");
+
           return (
             <div
               key={day}
@@ -52,6 +61,11 @@ const Calendar = () => {
               }`}
             >
               <p>{day.getDate()}</p>
+              {bills
+                .filter((bill) => isSameDay(bill.dueDate, day))
+                .map((bill) => {
+                  return <p key={bill.name}>{bill.name}</p>;
+                })}
             </div>
           );
         })}

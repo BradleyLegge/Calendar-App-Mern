@@ -6,7 +6,7 @@ export const getBills = async (req, res) => {
         const bills = await Bill.find().sort({dueDate: 1})
         res.json(bills);
     } catch (error) {
-        
+        res.status(500).json({message: error.message})
     }
 }
 
