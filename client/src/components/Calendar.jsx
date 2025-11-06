@@ -52,7 +52,6 @@ const Calendar = () => {
           const isCurrentMonth = day.getMonth() === currentMonth.getMonth();
           const isToday =
             format(day, "yyyy-MM-dd") === format(new Date(), "yyyy-MM-dd");
-
           return (
             <div
               key={day}
@@ -64,6 +63,7 @@ const Calendar = () => {
               {bills
                 .filter((bill) => isSameDay(bill.dueDate, day))
                 .map((bill) => {
+                  console.log(bill.dueDate);
                   return <p key={bill.name}>{bill.name}</p>;
                 })}
             </div>
