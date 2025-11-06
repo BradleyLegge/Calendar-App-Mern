@@ -11,12 +11,12 @@ import {
   addMonths,
   subMonths,
   isSameDay,
+  parseISO,
 } from "date-fns";
 
 const WEEKDAYS = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 
 const Calendar = () => {
-  const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(currentMonth);
@@ -32,7 +32,15 @@ const Calendar = () => {
   const handlePrevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
   const handleNextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
 
+  const toUTCDate = (date) => {
+    const d = new Date(date);
+    return new Date(
+      Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate())
+    );
+  };
+
   const { bills, fetchBills } = useBillsStore();
+
   useEffect(() => {
     fetchBills();
   }, [fetchBills]);
@@ -52,6 +60,10 @@ const Calendar = () => {
           const isCurrentMonth = day.getMonth() === currentMonth.getMonth();
           const isToday =
             format(day, "yyyy-MM-dd") === format(new Date(), "yyyy-MM-dd");
+
+          const dayBills = bills.filter((bill) => {
+            return isSameDay(toUTCDate(bill.dueDate), toUTCDate(day));
+          });
           return (
             <div
               key={day}
@@ -60,12 +72,9 @@ const Calendar = () => {
               }`}
             >
               <p>{day.getDate()}</p>
-              {bills
-                .filter((bill) => isSameDay(bill.dueDate, day))
-                .map((bill) => {
-                  console.log(bill.dueDate);
-                  return <p key={bill.name}>{bill.name}</p>;
-                })}
+              {dayBills.map((bill) => (
+                <p key="bill._id">{bill.name}</p>
+              ))}
             </div>
           );
         })}
