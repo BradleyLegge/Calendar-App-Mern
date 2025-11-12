@@ -5,11 +5,13 @@
 }
 
 .calendar-container {
+  /* position: relative; */
   width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   text-align: center;
+  /* border: 1px solid red */
 }
 
 .calendar-header {
@@ -19,11 +21,33 @@
   margin: 0 auto;
 }
 
-.calendar-body {
+.calendar-body {  
   display: grid;
   gap: 3px;
   grid-template-columns: repeat(7, 1fr);
 }
+
+/* Testing these divs */
+.calendar-details-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: lightgray;
+  opacity: .75;
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.calendar-details-content{
+  margin: 0 auto;
+}
+
+/* Testing the above divs */
 
 .calendar-day {
   border: 1px solid black;
@@ -31,6 +55,7 @@
   border-radius: 5px;
   height: 100px;
 }
+
 
 .calendar-day:hover{
   cursor: pointer;
