@@ -3,9 +3,13 @@ import { Link } from "react-router";
 
 const Nav = () => {
   return (
-    <nav>
-      <Link to="/">Calendar</Link>
-      <Link to="/bills">Bills</Link>
+    <nav className="nav-container">
+      <Link to="/" className="nav-links">
+        Calendar
+      </Link>
+      <Link to="/bills" className="nav-links">
+        Bills
+      </Link>
     </nav>
   );
 };

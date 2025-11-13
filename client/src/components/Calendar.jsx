@@ -53,9 +53,13 @@ const Calendar = () => {
   return (
     <div className="calendar-container">
       <div className="calendar-header">
-        <button onClick={handlePrevMonth}>Prev</button>
+        <button className="btn" onClick={handlePrevMonth}>
+          Prev
+        </button>
         <h2>{format(currentMonth, "MMMM yyyy")}</h2>
-        <button onClick={handleNextMonth}>Next</button>
+        <button className="btn" onClick={handleNextMonth}>
+          Next
+        </button>
       </div>
       <div className="calendar-body">
         {WEEKDAYS.map((day) => (
@@ -75,9 +79,13 @@ const Calendar = () => {
                 isCurrentMonth ? isToday && "today" : "not-current-month"
               }`}
             >
-              <p>{day.getDate()}</p>
+              <p className="current-day">{day.getDate()}</p>
               {dayBills.map((bill) => (
-                <p onClick={() => handleExistingBill(day, bill)} key="bill._id">
+                <p
+                  className="event-bill"
+                  onClick={() => handleExistingBill(day, bill)}
+                  key="bill._id"
+                >
                   {bill.name}
                 </p>
               ))}

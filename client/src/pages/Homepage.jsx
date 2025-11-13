@@ -4,13 +4,13 @@ import Calendar from "../components/Calendar";
 
 const Homepage = () => {
   return (
-    <div>
+    <div className="homepage-container">
       <header>
         <Nav />
       </header>
       <div>
         <Calendar />
-      </div>{" "}
+      </div>
     </div>
   );
 };

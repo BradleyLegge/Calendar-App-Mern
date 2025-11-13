@@ -5,7 +5,7 @@ import Billspage from "./pages/Billspage";
 
 const App = () => {
   return (
-    <div>
+    <div className="app-container">
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/bills" element={<Billspage />} />

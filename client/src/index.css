@@ -2,74 +2,146 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
 :root {
-  
+  --beige: hsl(40, 33%, 93%);
+  --navy: hsl(222, 39%, 21%);
+  --lite-navy: hsl(222, 30%, 35%);
+  --gold: hsl(46, 60%, 52%);
+  --text-primary: hsl(225, 25%, 15%);
+  --text-secondary: hsl(225, 15%, 50%);
+  --card: hsl(40, 30%, 96%);
+  --error: hsl(0, 50%, 45%);
+
+  --radius: 0.75rem;
+  --transition: all 0.2s ease-in-out;
 }
 
+body {
+  background: var(--beige);
+  color: var(--white);
+}
+
+/* App component */
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+header {
+  margin: 0 auto;
+}
+
+/* Nav component */
+
+.nav-container {
+  display: flex;
+}
+
+/* Calendar component */
+
 .calendar-container {
-  /* position: relative; */
+  background: var(--card);
+  border-radius: var(--radius);
   width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  gap: 25px;
   text-align: center;
-  /* border: 1px solid red */
 }
 
 .calendar-header {
+  background: var(--navy);
+  color: var(--beige);
+  border-radius: var(--radius);
   display: flex;
   align-items: center;
   gap: 20px;
   margin: 0 auto;
+  padding: 1rem 2rem;
 }
 
-.calendar-body {  
+.calendar-body {
   display: grid;
   gap: 3px;
   grid-template-columns: repeat(7, 1fr);
+  border-top: 1px solid var(--lite-navy);
+  background: var(--beige);
 }
 
 /* Testing these divs */
-.calendar-details-container{
+.calendar-details-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: lightgray;
-  opacity: .75;
-  border: 1px solid blue;
+  opacity: 0.75;
   display: flex;
   flex-direction: center;
   align-items: center;
   z-index: 1000;
 }
 
-.calendar-details-content{
+.calendar-details-content {
   margin: 0 auto;
 }
 
 /* Testing the above divs */
 
 .calendar-day {
-  border: 1px solid black;
-  background: grey;
-  border-radius: 5px;
+  background: var(--card);
+  border: 1px solid var(--navy);
+  border-radius: var(--radius);
+  text-align: right;
   height: 100px;
+  padding: 0.75rem;
 }
 
-
-.calendar-day:hover{
+.calendar-day:hover {
   cursor: pointer;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .not-current-month {
-  background: beige;
+  background: var(--lite-navy);
 }
 
-.today{
-  background: aqua;
+.today {
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 700;
+  border: 2px solid var(--navy);
+}
+
+.event-bill {
+  background: var(--error);
+  border-radius: var(--radius);
+  padding: 0.25rem;
+}
+
+/* buttons */
+
+.btn {
+  background: var(--lite-navy);
+  color: var(--beige);
+  padding: 10px;
+  border-radius: var(--radius);
+  border: none;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  cursor: pointer;
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.btn:active {
+  transform: scale(0.97);
 }
