@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 
 const Nav = () => {
   return (
     <nav className="nav-container">
-      <Link to="/" className="nav-links">
+      <NavLink to="/" className="nav-links">
         Calendar
-      </Link>
-      <Link to="/bills" className="nav-links">
+      </NavLink>
+      <NavLink to="/bills" className="nav-links">
         Bills
-      </Link>
+      </NavLink>
     </nav>
   );
 };

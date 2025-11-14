@@ -56,14 +56,16 @@ const Calendar = () => {
         <button className="btn" onClick={handlePrevMonth}>
           Prev
         </button>
-        <h2>{format(currentMonth, "MMMM yyyy")}</h2>
+        <h2 className="month-name">{format(currentMonth, "MMMM yyyy")}</h2>
         <button className="btn" onClick={handleNextMonth}>
           Next
         </button>
       </div>
       <div className="calendar-body">
         {WEEKDAYS.map((day) => (
-          <p key={day}>{day}</p>
+          <p className="weekday" key={day}>
+            {day}
+          </p>
         ))}
         {daysOfMonth.map((day) => {
           const isCurrentMonth = day.getMonth() === currentMonth.getMonth();

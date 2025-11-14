@@ -13,7 +13,8 @@
   --text-primary: hsl(225, 25%, 15%);
   --text-secondary: hsl(225, 15%, 50%);
   --card: hsl(40, 30%, 96%);
-  --error: hsl(0, 50%, 45%);
+  --bill: hsl(0, 50%, 45%);
+  --bill-hover: hsl(0, 50%, 50%);
 
   --radius: 0.75rem;
   --transition: all 0.2s ease-in-out;
@@ -22,6 +23,7 @@
 body {
   background: var(--beige);
   color: var(--white);
+  margin: 50px 0;
 }
 
 /* App component */
@@ -29,17 +31,35 @@ body {
 .homepage-container {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 20px;
 }
 
 header {
   margin: 0 auto;
+  width: 90%;
 }
 
 /* Nav component */
 
 .nav-container {
   display: flex;
+  justify-content: center;
+  background: var(--lite-navy);
+  border-radius: .75rem .75rem 0 0;
+}
+
+.nav-links{
+  font-size: 18px;
+  color: var(--beige);
+  text-decoration: none;
+  padding: 20px 100px;
+  border-radius: .75rem .75rem 0 0;
+
+}
+
+.nav-links.active{
+  background: var(--navy);
+  font-weight: 700;
 }
 
 /* Calendar component */
@@ -51,7 +71,6 @@ header {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 25px;
   text-align: center;
 }
 
@@ -62,8 +81,12 @@ header {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin: 0 auto;
+  margin: 40px auto;
   padding: 1rem 2rem;
+}
+
+.month-name{
+  font-size: 32px;
 }
 
 .calendar-body {
@@ -74,7 +97,11 @@ header {
   background: var(--beige);
 }
 
-/* Testing these divs */
+.weekday{
+  font-size: 24px;
+  font-weight: 500;
+}
+
 .calendar-details-container {
   position: absolute;
   top: 0;
@@ -92,37 +119,46 @@ header {
   margin: 0 auto;
 }
 
-/* Testing the above divs */
-
 .calendar-day {
   background: var(--card);
   border: 1px solid var(--navy);
   border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   text-align: right;
-  height: 100px;
+  height: 200px;
   padding: 0.75rem;
-}
-
-.calendar-day:hover {
-  cursor: pointer;
-  opacity: 0.5;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .not-current-month {
-  background: var(--lite-navy);
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .today {
   background: var(--gold);
-  color: var(--navy);
+  color: var(--text-primary);
   font-weight: 700;
   border: 2px solid var(--navy);
 }
 
 .event-bill {
-  background: var(--error);
+  background: var(--bill);
   border-radius: var(--radius);
   padding: 0.25rem;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.event-bill:hover {
+  cursor: pointer;
+  background: var(--lite-navy);
+  color: var(--card);
+  transition: var(--transition);
 }
 
 /* buttons */
@@ -139,7 +175,7 @@ header {
 .btn:hover {
   cursor: pointer;
   background: var(--gold);
-  color: var(--navy);
+  color: var(--text-primary);
 }
 
 .btn:active {
