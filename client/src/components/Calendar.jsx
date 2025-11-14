@@ -83,13 +83,14 @@ const Calendar = () => {
             >
               <p className="current-day">{day.getDate()}</p>
               {dayBills.map((bill) => (
-                <p
+                <div
                   className="event-bill"
                   onClick={() => handleExistingBill(day, bill)}
                   key="bill._id"
                 >
-                  {bill.name}
-                </p>
+                  <p>{bill.name}</p>
+                  <p>{`$ ${bill.amount.toFixed(2)}`}</p>
+                </div>
               ))}
             </div>
           );

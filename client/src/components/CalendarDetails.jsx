@@ -5,12 +5,16 @@ const CalendarDetails = ({ existingBill, selectedDay, setSelectedDay }) => {
   return (
     <div className="calendar-details-container">
       <div className="calendar-details-content">
-        <button onClick={() => setSelectedDay(null)}>Close</button>
-        <p>{format(selectedDay, "yyyy-MM-dd")}</p>
-        <div>
+        <button
+          className="btn close-modal-btn"
+          onClick={() => setSelectedDay(null)}
+        >
+          Close
+        </button>
+        <div className="calendar-details-info">
           <p>{existingBill.name}</p>
-          <p>{existingBill.dueDate}</p>
-          <p>{existingBill.amount}</p>
+          <p>{format(selectedDay, "MM-dd-yyyy")}</p>
+          <p>{`$ ${existingBill.amount.toFixed(2)}`}</p>
         </div>
       </div>
     </div>

@@ -13,6 +13,7 @@
   --text-primary: hsl(225, 25%, 15%);
   --text-secondary: hsl(225, 15%, 50%);
   --card: hsl(40, 30%, 96%);
+  --card-opacity: hsla(40, 30%, 96%, 0.75);
   --bill: hsl(0, 50%, 45%);
   --bill-hover: hsl(0, 50%, 50%);
 
@@ -45,19 +46,18 @@ header {
   display: flex;
   justify-content: center;
   background: var(--lite-navy);
-  border-radius: .75rem .75rem 0 0;
+  border-radius: 0.75rem 0.75rem 0 0;
 }
 
-.nav-links{
+.nav-links {
   font-size: 18px;
   color: var(--beige);
   text-decoration: none;
   padding: 20px 100px;
-  border-radius: .75rem .75rem 0 0;
-
+  border-radius: 0.75rem 0.75rem 0 0;
 }
 
-.nav-links.active{
+.nav-links.active {
   background: var(--navy);
   font-weight: 700;
 }
@@ -85,7 +85,7 @@ header {
   padding: 1rem 2rem;
 }
 
-.month-name{
+.month-name {
   font-size: 32px;
 }
 
@@ -97,26 +97,9 @@ header {
   background: var(--beige);
 }
 
-.weekday{
+.weekday {
   font-size: 24px;
   font-weight: 500;
-}
-
-.calendar-details-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.75;
-  display: flex;
-  flex-direction: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.calendar-details-content {
-  margin: 0 auto;
 }
 
 .calendar-day {
@@ -148,6 +131,8 @@ header {
 .event-bill {
   background: var(--bill);
   border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
   padding: 0.25rem;
   text-align: center;
   padding: 10px;
@@ -159,6 +144,47 @@ header {
   background: var(--lite-navy);
   color: var(--card);
   transition: var(--transition);
+}
+
+/* Calendar Details component */
+
+.calendar-details-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--card-opacity);
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.calendar-details-content {
+  position: relative;
+  margin: 0 auto;
+  background: var(--beige);
+  border-radius: var(--radius);
+  width: 50%;
+  height: 50%;
+}
+
+.close-modal-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.calendar-details-info {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  font-size: 18px;
+  gap: 5px;
 }
 
 /* buttons */
