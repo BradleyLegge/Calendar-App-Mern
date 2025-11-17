@@ -1,57 +1,31 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useBillsStore } from "../store/useBillsStore";
+import { format } from "date-fns";
 
 const Bills = () => {
-  const [name, setName] = useState("");
-  const [dueDate, setDueDate] = useState("");
-  const [amount, setAmount] = useState("");
-  const addBill = useBillsStore((state) => state.addBill);
+  const { bills, fetchBills } = useBillsStore();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!name || !dueDate || !amount) {
-      console.log("Provide information!");
-      return;
-    }
-
-    await addBill({
-      name,
-      dueDate: new Date(dueDate),
-      amount: parseFloat(amount),
-    });
-
-    setName("");
-    setDueDate("");
-    setAmount("");
-  };
+  useEffect(() => {
+    fetchBills();
+  }, [fetchBills]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>Title</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <label>Due Date</label>
-        <input
-          type="date"
-          value={dueDate}
-          onChange={(e) => setDueDate(e.target.value)}
-        />
-
-        <label>Amount</label>
-        <input
-          type="text"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-
-        <button type="submit">Add bill</button>
-      </form>
+    <div className="bills-container">
+      <div className="bills-header">
+        <p>Bill Name</p>
+        <p>Due Date</p>
+        <p>Amount</p>
+      </div>
+      {bills.map((bill) => {
+        const formattedDueDate = format(bill.dueDate, "MM dd yyyy");
+        return (
+          <div className="bills-body" key={bill._id}>
+            <p>{bill.name}</p>
+            <p>{formattedDueDate}</p>
+            <p>{`$ ${bill.amount.toFixed(2)}`}</p>
+          </div>
+        );
+      })}
     </div>
   );
 };

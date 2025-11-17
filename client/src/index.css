@@ -187,6 +187,38 @@ header {
   gap: 5px;
 }
 
+/* Bills */
+
+.bills-container {
+  width: 100%;
+  border: 1px solid red;
+}
+
+.bills-header,
+.bills-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.bills-header p {
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: underline;
+  padding-bottom: 20px;
+}
+
+/* Pages */
+
+/* Billspage */
+
+.billspage-container {
+  width: 90%;
+}
+
+.billspage-content {
+  display: flex;
+}
+
 /* buttons */
 
 .btn {
