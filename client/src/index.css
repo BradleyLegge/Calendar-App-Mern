@@ -27,7 +27,7 @@ body {
   margin: 50px 0;
 }
 
-input{
+input {
   height: 36px;
   padding: 4px;
 }
@@ -106,14 +106,20 @@ header {
   background: var(--card);
   border: 1px solid var(--navy);
   border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   text-align: right;
   height: 200px;
   padding: 0.75rem;
   font-weight: 700;
   font-size: 20px;
+}
+
+.events-container {
+  width: 100%;
+  max-height: 90%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .not-current-month {
@@ -133,9 +139,8 @@ header {
   border-radius: var(--radius);
   display: flex;
   justify-content: space-between;
-  padding: 0.25rem;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   font-size: 16px;
 }
 
@@ -208,7 +213,7 @@ header {
 
 /* BillForm component */
 
-.billForm-form{
+.billForm-form {
   width: 50%;
   margin: 0 auto;
   display: flex;
@@ -216,7 +221,7 @@ header {
   gap: 10px;
 }
 
-.billForm-inputs{
+.billForm-inputs {
   display: flex;
   flex-direction: column;
 }
@@ -232,7 +237,7 @@ header {
 
 /* Billspage */
 
-.billspage-container{
+.billspage-container {
   border: 1px solid red;
   min-height: 100%;
 }
@@ -242,7 +247,7 @@ header {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 50px; 
+  gap: 50px;
   justify-content: center;
 }
 

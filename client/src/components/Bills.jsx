@@ -21,7 +21,7 @@ const Bills = () => {
         return (
           <div className="bills-body" key={bill._id}>
             <p>{bill.name}</p>
-            <p>{formattedDueDate}</p>
+            <p>{bill.dueDate}</p>
             <p>{`$ ${bill.amount.toFixed(2)}`}</p>
           </div>
         );
